@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sustainability Assessment Concentration</title>
+<meta name="description" content="A four-course undergraduate engineering concentration in sustainability assessment: environmental management, green buildings, emissions reporting, and life cycle assessment.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap">
+<style>
+:root{
+  --ink:#16201d; --muted:#4d5a56; --ground:#f6f7f5; --card:#ffffff; --line:#d5dad7;
+  --c1:#0F6B5C; --c2:#1F5FA8; --c3:#A8501F; --c4:#5B4AA0;
+  --display:'Space Grotesk',system-ui,sans-serif; --body:Inter,system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+h1,h2,h3{font-family:var(--display);line-height:1.05;margin:0;text-wrap:balance}
+h2{font-size:clamp(28px,4vw,44px);letter-spacing:-.02em}
+section{padding:88px 0}
+
+/* top bar */
+.bar{position:sticky;top:0;z-index:10;background:rgba(246,247,245,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:56px;flex-wrap:wrap}
+.bar strong{font-family:var(--display)}
+.bar nav{display:flex;gap:20px;flex-wrap:wrap;font-size:15px}
+.bar nav a{text-decoration:none;padding:10px 0;border-bottom:2px solid transparent}
+.bar nav a:hover,.bar nav a:focus-visible{border-color:var(--ink)}
+.stripe{display:grid;grid-template-columns:repeat(4,1fr);height:6px}
+.stripe i{display:block;transform-origin:left;animation:grow .9s cubic-bezier(.2,.7,.2,1) both}
+.stripe i:nth-child(1){background:var(--c1)}
+.stripe i:nth-child(2){background:var(--c2);animation-delay:.12s}
+.stripe i:nth-child(3){background:var(--c3);animation-delay:.24s}
+.stripe i:nth-child(4){background:var(--c4);animation-delay:.36s}
+@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+/* hero */
+.hero{padding:64px 0 0}
+.hero-row{display:flex;flex-wrap:wrap;align-items:center;gap:40px}
+.skyline{display:block;width:100%;height:clamp(150px,22vw,300px);margin-top:36px}
+
+.hero-text{flex:1 1 440px;min-width:0}
+.hero h1{font-size:clamp(24px,6.6vw,104px);letter-spacing:-.03em;margin:14px 0 26px;white-space:nowrap;animation:rise .8s .1s cubic-bezier(.2,.7,.2,1) both}
+.hero h1 span{display:inline-block;animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+.hero h1 span:nth-child(2){animation-delay:.15s}
+.hero p.lead{font-size:20px;max-width:34em;margin:0 0 28px;animation:rise .8s .3s both}
+.hero .eyebrow{animation:rise .8s both}
+.cta{display:inline-block;background:var(--ink);color:#fff;text-decoration:none;font-weight:600;padding:14px 22px;animation:rise .8s .45s both;transition:transform .2s}
+.cta:hover,.cta:focus-visible{transform:translateY(-2px)}
+@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+
+.orbit{flex:0 1 340px;min-width:240px;margin:0 auto}
+.orbit svg{width:100%;height:auto;display:block;overflow:visible}
+.ring{transform-origin:210px 210px;animation:spin 40s linear infinite}
+.arc{fill:none;stroke-width:16;stroke-dasharray:300 1200;stroke-dashoffset:300;animation:draw 1.4s cubic-bezier(.2,.7,.2,1) forwards}
+.arc.a2{animation-delay:.2s}.arc.a3{animation-delay:.4s}.arc.a4{animation-delay:.6s}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.pulse{transform-origin:210px 210px;animation:pulse 4s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:.5}50%{transform:scale(1.08);opacity:.15}}
+.node text{font-family:var(--display);font-weight:700;font-size:15px;fill:var(--ink)}
+.node{animation:rise .8s both}
+.node.n2{animation-delay:.9s}.node.n1{animation-delay:.7s}.node.n3{animation-delay:1.1s}.node.n4{animation-delay:1.3s}
+.core{font-family:var(--display);font-weight:700;font-size:20px;fill:var(--ink)}
+
+/* reveal on scroll */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* courses */
+.tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:36px 0 0}
+.tab{font:inherit;text-align:left;background:var(--card);border:1px solid var(--line);border-top:6px solid var(--c);padding:14px 16px;min-height:44px;cursor:pointer;color:var(--ink);transition:transform .2s,box-shadow .2s}
+.tab .ti{display:block;margin-bottom:8px}
+.tab small{display:block;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--c)}
+.tab b{font-family:var(--display);font-size:18px;line-height:1.15;display:block;margin-top:4px}
+.tab:hover{transform:translateY(-3px)}
+.tab[aria-selected="true"]{background:var(--c);color:#fff;border-color:var(--c);box-shadow:0 10px 24px -12px var(--c)}
+.tab[aria-selected="true"] small{color:#fff}
+.tab:focus-visible,.cta:focus-visible,a:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.panel{background:var(--card);border:1px solid var(--line);border-top:0;padding:32px;display:none}
+.panel.on{display:block;animation:panel .5s cubic-bezier(.2,.7,.2,1)}
+@keyframes panel{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.panel h3{font-size:clamp(24px,3vw,34px);color:var(--c);margin-bottom:8px}
+.panel .hook{font-family:var(--display);font-weight:700;font-size:clamp(20px,2.4vw,28px);margin:0 0 6px}
+.panel .desc{max-width:46em;margin:0 0 24px}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:28px}
+.cols h4{font-family:var(--display);font-size:13px;letter-spacing:.14em;text-transform:uppercase;margin:0 0 10px;color:var(--c)}
+.cols ul{margin:0;padding:0;list-style:none}
+.cols li{padding:7px 0;border-bottom:1px solid var(--line);font-size:16px}
+.panel.on .cols li{animation:rise .5s both}
+.panel.on .cols li:nth-child(2){animation-delay:.05s}.panel.on .cols li:nth-child(3){animation-delay:.1s}
+.panel.on .cols li:nth-child(4){animation-delay:.15s}.panel.on .cols li:nth-child(5){animation-delay:.2s}
+.panel.on .cols li:nth-child(6){animation-delay:.25s}
+.path{margin-top:24px;border:2px solid var(--c);padding:14px 18px;font-weight:600}
+.path span{font-weight:400;color:var(--muted)}
+
+/* pathway line */
+.steps{position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;margin-top:40px}
+.step{background:var(--card);border:1px solid var(--line);padding:22px;position:relative}
+.step::before{content:"";position:absolute;left:0;top:0;height:6px;width:100%;background:var(--c);transform:scaleX(0);transform-origin:left;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.step.in::before{transform:scaleX(1)}
+.step .si{display:block;margin-bottom:10px;color:var(--c)}
+.step small{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--c)}
+.step b{display:block;font-family:var(--display);font-size:20px;line-height:1.2;margin:6px 0}
+.step p{margin:0;font-size:15px;color:var(--muted)}
+
+/* audience */
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;padding:0;list-style:none}
+.chips li{background:var(--card);border:1px solid var(--ink);padding:10px 16px;font-weight:600;font-size:16px}
+.chips li.reveal:nth-child(2){transition-delay:.06s}.chips li.reveal:nth-child(3){transition-delay:.12s}
+.chips li.reveal:nth-child(4){transition-delay:.18s}.chips li.reveal:nth-child(5){transition-delay:.24s}
+.chips li.reveal:nth-child(6){transition-delay:.3s}.chips li.reveal:nth-child(7){transition-delay:.36s}
+.chips li.reveal:nth-child(8){transition-delay:.42s}
+
+.roles{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin:32px 0 0;padding:0;list-style:none}
+.roles li{background:var(--card);border:1px solid var(--line);border-left:8px solid var(--c);padding:16px 18px;font-weight:600;transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1),translate .2s}
+.roles li:hover{translate:6px 0}
+.dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:32px 0 0;padding:0;list-style:none}
+.dl a{display:flex;flex-direction:column;gap:4px;height:100%;background:var(--card);border:1px solid var(--line);border-top:6px solid var(--ink);padding:18px;text-decoration:none;transition:transform .2s}
+.dl a:hover{transform:translateY(-3px)}
+.dl b{font-family:var(--display);font-size:19px}
+.dl span{font-size:15px;color:var(--muted)}
+.dl small{margin-top:auto;padding-top:10px;font-size:13px;font-weight:600}
+dl.abbr{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:8px 32px;margin:28px 0 0}
+dl.abbr div{display:flex;gap:12px;border-bottom:1px solid var(--line);padding:8px 0}
+dl.abbr dt{font-weight:700;min-width:64px}
+dl.abbr dd{margin:0;color:var(--muted)}
+
+footer{background:var(--ink);color:#fff;padding:48px 0}
+footer .wrap{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between}
+footer p{margin:0;max-width:34em}
+.alt{background:#eceeeb}
+
+@media (max-width:760px){
+  section{padding:60px 0}
+  .tabs{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .panel{padding:22px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none}
+  .arc{stroke-dashoffset:0}
+  .step::before{transform:scaleX(1)}
+}
+</style>
+</head>
+<body>
+
+<div class="stripe" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+<header class="bar">
+  <div class="wrap">
+    <strong>Sustainability Assessment</strong>
+    <nav aria-label="Page sections">
+      <a href="#courses">Courses</a>
+      <a href="#pathway">Credentials</a>
+      <a href="#careers">Careers</a>
+      <a href="#video">Video</a>
+      <a href="#audience">Departments</a>
+      <a href="#downloads">Flyers</a>
+      <a href="#abbreviations">Abbreviations</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Undergraduate engineering concentration · KFUPM</div>
+    <h1>Sustainability Assessment</h1>
+    <div class="hero-row">
+      <div class="hero-text">
+        <p class="lead">Want a career in sustainability? Four courses turn it into skills employers can check: audit an environmental management system, rate a green building, report a carbon inventory, and run a life cycle assessment.</p>
+        <a class="cta" href="#courses">See what you will be able to do</a>
+      </div>
+      <div class="orbit">
+      <svg viewBox="0 0 420 420" role="img" aria-label="Diagram: four courses arranged in a cycle, manage, build, measure and close the loop">
+        <circle class="pulse" cx="210" cy="210" r="92" fill="none" stroke="#16201d" stroke-width="2"/>
+        <g class="ring">
+          <path class="arc a1" d="M210 60 A150 150 0 0 1 360 210" stroke="#0F6B5C" pathLength="300"/>
+          <path class="arc a2" d="M360 210 A150 150 0 0 1 210 360" stroke="#1F5FA8" pathLength="300"/>
+          <path class="arc a3" d="M210 360 A150 150 0 0 1 60 210" stroke="#A8501F" pathLength="300"/>
+          <path class="arc a4" d="M60 210 A150 150 0 0 1 210 60" stroke="#5B4AA0" pathLength="300"/>
+        </g>
+        <text class="core" x="210" y="204" text-anchor="middle">Assess.</text>
+        <text class="core" x="210" y="230" text-anchor="middle">Improve.</text>
+        <g class="node n1"><circle cx="316" cy="104" r="9" fill="#0F6B5C"/><text x="332" y="96">Manage</text></g>
+        <g class="node n2"><circle cx="316" cy="316" r="9" fill="#1F5FA8"/><text x="332" y="336">Build</text></g>
+        <g class="node n3"><circle cx="104" cy="316" r="9" fill="#A8501F"/><text x="88" y="336" text-anchor="end">Measure</text></g>
+        <g class="node n4"><circle cx="104" cy="104" r="9" fill="#5B4AA0"/><text x="88" y="96" text-anchor="end">Close the loop</text></g>
+      </svg>
+    </div>
+    </div>
+  </div>
+  <svg class="skyline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 420" preserveAspectRatio="xMidYMax slice" role="img" aria-label="Illustration of a city skyline with wind turbines, solar panels and trees"><rect width="1920" height="420" fill="#e6efe9"/><circle cx="1560" cy="120" r="62" fill="#f1c9a8"/><path d="M0 330 Q480 250 960 320 T1920 300 V420 H0Z" fill="#cfe2d8"/><rect x="1176" y="115" width="8" height="230" fill="#ffffff"/><path d="M1180 115 l-9 -127 l18 0z" fill="#ffffff" transform="rotate(18 1180 115)"/><path d="M1180 115 l-9 -127 l18 0z" fill="#ffffff" transform="rotate(138 1180 115)"/><path d="M1180 115 l-9 -127 l18 0z" fill="#ffffff" transform="rotate(258 1180 115)"/><circle cx="1180" cy="115" r="9" fill="#16201d"/><rect x="1326" y="155" width="8" height="190" fill="#ffffff"/><path d="M1330 155 l-9 -105 l18 0z" fill="#ffffff" transform="rotate(18 1330 155)"/><path d="M1330 155 l-9 -105 l18 0z" fill="#ffffff" transform="rotate(138 1330 155)"/><path d="M1330 155 l-9 -105 l18 0z" fill="#ffffff" transform="rotate(258 1330 155)"/><circle cx="1330" cy="155" r="9" fill="#16201d"/><rect x="1696" y="95" width="8" height="250" fill="#ffffff"/><path d="M1700 95 l-9 -138 l18 0z" fill="#ffffff" transform="rotate(18 1700 95)"/><path d="M1700 95 l-9 -138 l18 0z" fill="#ffffff" transform="rotate(138 1700 95)"/><path d="M1700 95 l-9 -138 l18 0z" fill="#ffffff" transform="rotate(258 1700 95)"/><circle cx="1700" cy="95" r="9" fill="#16201d"/><rect x="120" y="150" width="120" height="210" fill="#0F6B5C"/><rect x="132" y="166" width="22" height="18" fill="#ffffff" opacity=".55"/><rect x="164" y="166" width="22" height="18" fill="#ffffff" opacity=".55"/><rect x="196" y="166" width="22" height="18" fill="#ffffff" opacity=".55"/><rect x="132" y="204" width="22" height="18" fill="#ffffff" opacity=".55"/><rect x="164" y="204" width="22" height="18" fill="#ffffff" opacity=".55"/><rect x="196" y="204" width="22" height="18" fill="#ffffff" opacity=".55"/><rect x="132" y="242" width="22" height="18" fill="#ffffff" opacity=".55"/><rect x="164" y="242" width="22" height="18" fill="#ffffff" opacity=".55"/><rect x="196" y="242" width="22" height="18" fill="#ffffff" opacity=".55"/><rect x="132" y="280" width="22" height="18" fill="#ffffff" opacity=".55"/><rect x="164" y="280" width="22" height="18" fill="#ffffff" opacity=".55"/><rect x="196" y="280" width="22" height="18" fill="#ffffff" opacity=".55"/><rect x="132" y="318" width="22" height="18" fill="#ffffff" opacity=".55"/><rect x="164" y="318" width="22" height="18" fill="#ffffff" opacity=".55"/><rect x="196" y="318" width="22" height="18" fill="#ffffff" opacity=".55"/><rect x="250" y="210" width="90" height="150" fill="#1F5FA8"/><rect x="262" y="226" width="23" height="18" fill="#ffffff" opacity=".55"/><rect x="295" y="226" width="23" height="18" fill="#ffffff" opacity=".55"/><rect x="262" y="264" width="23" height="18" fill="#ffffff" opacity=".55"/><rect x="295" y="264" width="23" height="18" fill="#ffffff" opacity=".55"/><rect x="262" y="302" width="23" height="18" fill="#ffffff" opacity=".55"/><rect x="295" y="302" width="23" height="18" fill="#ffffff" opacity=".55"/><rect x="350" y="90" width="140" height="270" fill="#5B4AA0"/><rect x="362" y="106" width="19" height="18" fill="#ffffff" opacity=".55"/><rect x="391" y="106" width="19" height="18" fill="#ffffff" opacity=".55"/><rect x="420" y="106" width="19" height="18" fill="#ffffff" opacity=".55"/><rect x="449" y="106" width="19" height="18" fill="#ffffff" opacity=".55"/><rect x="362" y="144" width="19" height="18" fill="#ffffff" opacity=".55"/><rect x="391" y="144" width="19" height="18" fill="#ffffff" opacity=".55"/><rect x="420" y="144" width="19" height="18" fill="#ffffff" opacity=".55"/><rect x="449" y="144" width="19" height="18" fill="#ffffff" opacity=".55"/><rect x="362" y="182" width="19" height="18" fill="#ffffff" opacity=".55"/><rect x="391" y="182" width="19" height="18" fill="#ffffff" opacity=".55"/><rect x="420" y="182" width="19" height="18" fill="#ffffff" opacity=".55"/><rect x="449" y="182" width="19" height="18" fill="#ffffff" opacity=".55"/><rect x="362" y="220" width="19" height="18" fill="#ffffff" opacity=".55"/><rect x="391" y="220" width="19" height="18" fill="#ffffff" opacity=".55"/><rect x="420" y="220" width="19" height="18" fill="#ffffff" opacity=".55"/><rect x="449" y="220" width="19" height="18" fill="#ffffff" opacity=".55"/><rect x="362" y="258" width="19" height="18" fill="#ffffff" opacity=".55"/><rect x="391" y="258" width="19" height="18" fill="#ffffff" opacity=".55"/><rect x="420" y="258" width="19" height="18" fill="#ffffff" opacity=".55"/><rect x="449" y="258" width="19" height="18" fill="#ffffff" opacity=".55"/><rect x="362" y="296" width="19" height="18" fill="#ffffff" opacity=".55"/><rect x="391" y="296" width="19" height="18" fill="#ffffff" opacity=".55"/><rect x="420" y="296" width="19" height="18" fill="#ffffff" opacity=".55"/><rect x="449" y="296" width="19" height="18" fill="#ffffff" opacity=".55"/><rect x="362" y="334" width="19" height="18" fill="#ffffff" opacity=".55"/><rect x="391" y="334" width="19" height="18" fill="#ffffff" opacity=".55"/><rect x="420" y="334" width="19" height="18" fill="#ffffff" opacity=".55"/><rect x="449" y="334" width="19" height="18" fill="#ffffff" opacity=".55"/><rect x="500" y="180" width="100" height="180" fill="#0F6B5C"/><rect x="512" y="196" width="28" height="18" fill="#ffffff" opacity=".55"/><rect x="550" y="196" width="28" height="18" fill="#ffffff" opacity=".55"/><rect x="512" y="234" width="28" height="18" fill="#ffffff" opacity=".55"/><rect x="550" y="234" width="28" height="18" fill="#ffffff" opacity=".55"/><rect x="512" y="272" width="28" height="18" fill="#ffffff" opacity=".55"/><rect x="550" y="272" width="28" height="18" fill="#ffffff" opacity=".55"/><rect x="512" y="310" width="28" height="18" fill="#ffffff" opacity=".55"/><rect x="550" y="310" width="28" height="18" fill="#ffffff" opacity=".55"/><rect x="610" y="240" width="130" height="120" fill="#A8501F"/><rect x="622" y="256" width="25" height="18" fill="#ffffff" opacity=".55"/><rect x="657" y="256" width="25" height="18" fill="#ffffff" opacity=".55"/><rect x="693" y="256" width="25" height="18" fill="#ffffff" opacity=".55"/><rect x="622" y="294" width="25" height="18" fill="#ffffff" opacity=".55"/><rect x="657" y="294" width="25" height="18" fill="#ffffff" opacity=".55"/><rect x="693" y="294" width="25" height="18" fill="#ffffff" opacity=".55"/><rect x="622" y="332" width="25" height="18" fill="#ffffff" opacity=".55"/><rect x="657" y="332" width="25" height="18" fill="#ffffff" opacity=".55"/><rect x="693" y="332" width="25" height="18" fill="#ffffff" opacity=".55"/><rect x="750" y="130" width="90" height="230" fill="#1F5FA8"/><rect x="762" y="146" width="23" height="18" fill="#ffffff" opacity=".55"/><rect x="795" y="146" width="23" height="18" fill="#ffffff" opacity=".55"/><rect x="762" y="184" width="23" height="18" fill="#ffffff" opacity=".55"/><rect x="795" y="184" width="23" height="18" fill="#ffffff" opacity=".55"/><rect x="762" y="222" width="23" height="18" fill="#ffffff" opacity=".55"/><rect x="795" y="222" width="23" height="18" fill="#ffffff" opacity=".55"/><rect x="762" y="260" width="23" height="18" fill="#ffffff" opacity=".55"/><rect x="795" y="260" width="23" height="18" fill="#ffffff" opacity=".55"/><rect x="762" y="298" width="23" height="18" fill="#ffffff" opacity=".55"/><rect x="795" y="298" width="23" height="18" fill="#ffffff" opacity=".55"/><rect x="762" y="336" width="23" height="18" fill="#ffffff" opacity=".55"/><rect x="795" y="336" width="23" height="18" fill="#ffffff" opacity=".55"/><rect x="610" y="232" width="130" height="8" fill="#3f9a6b"/><path d="M905 360 l18 -46 h44 l-18 46z" fill="#1F5FA8"/><path d="M905 360 l18 -46 h44 l-18 46z" fill="none" stroke="#fff" stroke-width="2"/><path d="M967 360 l18 -46 h44 l-18 46z" fill="#1F5FA8"/><path d="M967 360 l18 -46 h44 l-18 46z" fill="none" stroke="#fff" stroke-width="2"/><path d="M1029 360 l18 -46 h44 l-18 46z" fill="#1F5FA8"/><path d="M1029 360 l18 -46 h44 l-18 46z" fill="none" stroke="#fff" stroke-width="2"/><path d="M1091 360 l18 -46 h44 l-18 46z" fill="#1F5FA8"/><path d="M1091 360 l18 -46 h44 l-18 46z" fill="none" stroke="#fff" stroke-width="2"/><rect x="56" y="326" width="8" height="34" fill="#6b4a2f"/><circle cx="60" cy="302" r="34" fill="#3f9a6b"/><rect x="1086" y="330" width="8" height="30" fill="#6b4a2f"/><circle cx="1090" cy="309" r="30" fill="#3f9a6b"/><rect x="1446" y="322" width="8" height="38" fill="#6b4a2f"/><circle cx="1450" cy="295" r="38" fill="#3f9a6b"/><rect x="1836" y="328" width="8" height="32" fill="#6b4a2f"/><circle cx="1840" cy="306" r="32" fill="#3f9a6b"/><rect x="876" y="334" width="8" height="26" fill="#6b4a2f"/><circle cx="880" cy="316" r="26" fill="#3f9a6b"/><rect y="360" width="1920" height="60" fill="#16201d"/></svg>
+</section>
+
+<section id="courses" class="alt">
+  <div class="wrap">
+    <div class="eyebrow reveal">The concentration</div>
+    <h2 class="reveal">What you will be able to do</h2>
+    <div class="tabs reveal" role="tablist" aria-label="Courses">
+      <button class="tab" role="tab" id="t1" data-i="1" aria-controls="p1" aria-selected="true" style="--c:var(--c1)"><svg class="ti" aria-hidden="true" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="M8.5 13l2.5 2.5 4.5-5"/></svg><small>Course 1</small><b>Environmental Management and Assessment</b></button>
+      <button class="tab" role="tab" id="t2" data-i="2" aria-controls="p2" aria-selected="false" tabindex="-1" style="--c:var(--c2)"><svg class="ti" aria-hidden="true" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V6l8-3v18"/><path d="M12 9h8v12"/><path d="M2 21h20"/><path d="M7 9h2M7 13h2M7 17h2M15 13h2M15 17h2"/></svg><small>Course 2 · ARE 460</small><b>Green and Sustainable Buildings</b></button>
+      <button class="tab" role="tab" id="t3" data-i="3" aria-controls="p3" aria-selected="false" tabindex="-1" style="--c:var(--c3)"><svg class="ti" aria-hidden="true" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17a4 4 0 0 1-.5-7.97A5.5 5.5 0 0 1 17.2 7.6 4.2 4.2 0 0 1 17.5 16"/><path d="M9 21v-3M12 21v-6M15 21v-4"/></svg><small>Course 3</small><b>Emissions Estimation and Reporting</b></button>
+      <button class="tab" role="tab" id="t4" data-i="4" aria-controls="p4" aria-selected="false" tabindex="-1" style="--c:var(--c4)"><svg class="ti" aria-hidden="true" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 0 0-14.3-4.9"/><path d="M5 3v4.5h4.5"/><path d="M4 12a8 8 0 0 0 14.3 4.9"/><path d="M19 21v-4.5h-4.5"/></svg><small>Course 4</small><b>Circularity and Life Cycle Assessment</b></button>
+    </div>
+
+    <div class="panel on" role="tabpanel" id="p1" aria-labelledby="t1" style="--c:var(--c1)">
+      <h3>Environmental Management and Assessment</h3>
+      <p class="hook">Be the engineer who keeps projects compliant.</p>
+      <p class="desc">Build and audit an environmental management system, and scope an environmental impact assessment to Saudi national requirements.</p>
+      <div class="cols">
+        <div><h4>You will be able to</h4><ul>
+          <li>Identify and rank the environmental aspects of an engineering activity</li>
+          <li>Plan and run a mock internal environmental management system audit</li>
+          <li>Prepare an environmental impact assessment scoping report with mitigation measures</li>
+        </ul></div>
+        <div><h4>What you will study</h4><ul>
+          <li>Environmental management systems and ISO 14001</li>
+          <li>Environmental aspects, impacts and significance</li>
+          <li>Saudi environmental law and compliance obligations</li>
+          <li>Performance evaluation and management system auditing</li>
+          <li>Environmental impact assessment: screening, scoping and baseline studies</li>
+          <li>Impact prediction, mitigation and monitoring plans</li>
+        </ul></div>
+        <div><h4>Standards covered</h4><ul>
+          <li>ISO 14001: environmental management systems</li>
+          <li>ISO 19011: auditing management systems</li>
+          <li>National Center for Environmental Compliance requirements</li>
+        </ul></div>
+        <div><h4>Who should take it</h4><ul>
+          <li>Civil and Environmental Engineering</li>
+          <li>Chemical Engineering</li>
+          <li>Petroleum Engineering</li>
+          <li>Industrial and Systems Engineering</li>
+          <li>Construction Engineering and Management</li>
+        </ul></div>
+      </div>
+      <p class="path">Professional pathway: <span>ISO 14001 internal and lead auditor training.</span></p>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p2" aria-labelledby="t2" style="--c:var(--c2)" hidden>
+      <h3>Green and Sustainable Buildings</h3>
+      <p class="hook">Design buildings that use less and earn a green rating.</p>
+      <p class="desc">Rate, design and improve buildings with the Leadership in Energy and Environmental Design (LEED) and Mostadam rating systems.</p>
+      <div class="cols">
+        <div><h4>You will be able to</h4><ul>
+          <li>Evaluate a building against LEED and Mostadam credits</li>
+          <li>Propose integrated design improvements with cost in view</li>
+          <li>Use energy, water or daylight tools to support decisions</li>
+        </ul></div>
+        <div><h4>What you will study</h4><ul>
+          <li>Green building principles and rating systems</li>
+          <li>LEED and Mostadam certification process</li>
+          <li>Sustainable sites, location and transportation</li>
+          <li>Water efficiency in arid climates</li>
+          <li>Energy performance, renewables and commissioning</li>
+          <li>Materials, embodied carbon and indoor environmental quality</li>
+        </ul></div>
+        <div><h4>Standards covered</h4><ul>
+          <li>LEED green building rating system</li>
+          <li>Mostadam, the Saudi green building rating system</li>
+          <li>Saudi Building Code energy and green provisions</li>
+        </ul></div>
+        <div><h4>Who should take it</h4><ul>
+          <li>Architectural Engineering</li>
+          <li>Civil Engineering</li>
+          <li>Mechanical Engineering (building services)</li>
+          <li>Electrical Engineering (lighting, power)</li>
+          <li>Construction Engineering and Management</li>
+          <li>Architecture</li>
+        </ul></div>
+      </div>
+      <p class="path">Professional pathway: <span>LEED Green Associate examination.</span></p>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p3" aria-labelledby="t3" style="--c:var(--c3)" hidden>
+      <h3>Emissions Estimation and Reporting</h3>
+      <p class="hook">Put a number on carbon, and prove it.</p>
+      <p class="desc">Quantify, report and verify greenhouse gas (GHG) emissions to international standards.</p>
+      <div class="cols">
+        <div><h4>You will be able to</h4><ul>
+          <li>Compile a greenhouse gas inventory for an organization</li>
+          <li>Quantify project emission reductions against a baseline</li>
+          <li>Plan the verification of a greenhouse gas statement</li>
+        </ul></div>
+        <div><h4>What you will study</h4><ul>
+          <li>Greenhouse gas accounting principles and boundaries</li>
+          <li>Direct emissions: combustion, process and fugitive</li>
+          <li>Purchased energy and value chain emissions</li>
+          <li>Emission factors, data quality and uncertainty</li>
+          <li>Project-level reductions and removals</li>
+          <li>Reporting, verification and validation</li>
+        </ul></div>
+        <div><h4>Standards covered</h4><ul>
+          <li>ISO 14064, Parts 1 to 3: quantification, reporting and verification</li>
+          <li>ISO 14065: validation and verification bodies</li>
+          <li>GHG Protocol corporate standards</li>
+        </ul></div>
+        <div><h4>Who should take it</h4><ul>
+          <li>Chemical Engineering</li>
+          <li>Mechanical and Energy Engineering</li>
+          <li>Petroleum Engineering</li>
+          <li>Civil and Environmental Engineering</li>
+          <li>Industrial and Systems Engineering</li>
+          <li>Electrical Engineering (power)</li>
+        </ul></div>
+      </div>
+      <p class="path">Professional pathway: <span>greenhouse gas inventory quantifier and verifier roles.</span></p>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p4" aria-labelledby="t4" style="--c:var(--c4)" hidden>
+      <h3>Circularity and Life Cycle Assessment</h3>
+      <p class="hook">See the whole life of a product, then redesign it.</p>
+      <p class="desc">Measure the life cycle impact, carbon footprint and circularity of what engineers build, using life cycle assessment (LCA).</p>
+      <div class="cols">
+        <div><h4>You will be able to</h4><ul>
+          <li>Carry out a comparative life cycle assessment that conforms to ISO standards</li>
+          <li>Calculate a product carbon footprint</li>
+          <li>Measure and improve the circularity of a product or system</li>
+        </ul></div>
+        <div><h4>What you will study</h4><ul>
+          <li>Circular economy principles and business models</li>
+          <li>Measuring circularity and material flows</li>
+          <li>Life cycle assessment: goal, scope and inventory analysis</li>
+          <li>Impact assessment and interpretation</li>
+          <li>Product carbon footprints and environmental product declarations</li>
+          <li>LCA software and databases</li>
+        </ul></div>
+        <div><h4>Standards covered</h4><ul>
+          <li>ISO 14040 and ISO 14044: life cycle assessment</li>
+          <li>ISO 14067: carbon footprint of products</li>
+          <li>ISO 59000 series: circular economy</li>
+        </ul></div>
+        <div><h4>Who should take it</h4><ul>
+          <li>Civil and Environmental Engineering</li>
+          <li>Materials Science and Engineering</li>
+          <li>Mechanical Engineering</li>
+          <li>Chemical Engineering</li>
+          <li>Industrial and Systems Engineering</li>
+          <li>Architectural Engineering</li>
+        </ul></div>
+      </div>
+      <p class="path">Professional pathway: <span>life cycle assessment practitioner and carbon footprint analyst roles.</span></p>
+    </div>
+  </div>
+</section>
+
+<section id="pathway">
+  <div class="wrap">
+    <div class="eyebrow reveal">Credentials</div>
+    <h2 class="reveal">Each course points to a professional credential</h2>
+    <div class="steps">
+      <div class="step reveal" style="--c:var(--c1)"><svg class="si" aria-hidden="true" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="M8.5 13l2.5 2.5 4.5-5"/></svg><small>Course 1</small><b>ISO 14001 auditor</b><p>Ready for internal and lead auditor training.</p></div>
+      <div class="step reveal" style="--c:var(--c2)"><svg class="si" aria-hidden="true" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V6l8-3v18"/><path d="M12 9h8v12"/><path d="M2 21h20"/><path d="M7 9h2M7 13h2M7 17h2M15 13h2M15 17h2"/></svg><small>Course 2</small><b>LEED Green Associate</b><p>Prepared for the examination.</p></div>
+      <div class="step reveal" style="--c:var(--c3)"><svg class="si" aria-hidden="true" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17a4 4 0 0 1-.5-7.97A5.5 5.5 0 0 1 17.2 7.6 4.2 4.2 0 0 1 17.5 16"/><path d="M9 21v-3M12 21v-6M15 21v-4"/></svg><small>Course 3</small><b>GHG quantifier and verifier</b><p>Inventory and verification skills to ISO 14064.</p></div>
+      <div class="step reveal" style="--c:var(--c4)"><svg class="si" aria-hidden="true" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 0 0-14.3-4.9"/><path d="M5 3v4.5h4.5"/><path d="M4 12a8 8 0 0 0 14.3 4.9"/><path d="M19 21v-4.5h-4.5"/></svg><small>Course 4</small><b>LCA practitioner</b><p>Life cycle and carbon footprint studies to ISO standards.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="careers">
+  <div class="wrap">
+    <div class="eyebrow reveal">Career opportunities</div>
+    <h2 class="reveal">Where it can take you</h2>
+    <ul class="roles">
+      <li class="reveal" style="--c:var(--c1)">Environmental Engineer</li>
+      <li class="reveal" style="--c:var(--c1)">Senior Environmental Engineer</li>
+      <li class="reveal" style="--c:var(--c1)">Environmental Specialist</li>
+      <li class="reveal" style="--c:var(--c2)">Sustainability Engineer</li>
+      <li class="reveal" style="--c:var(--c2)">Sustainability Specialist</li>
+      <li class="reveal" style="--c:var(--c2)">Sustainability and Environmental Manager</li>
+      <li class="reveal" style="--c:var(--c3)">Emissions Analyst</li>
+      <li class="reveal" style="--c:var(--c4)">Life Cycle Assessment Analyst</li>
+    </ul>
+    <p class="reveal" style="max-width:44em;margin-top:28px;color:var(--muted)">These are job titles advertised on LinkedIn for Saudi Arabia in the fields this concentration covers. Several are senior roles that need experience as well as the degree.</p>
+  </div>
+</section>
+
+<section id="video" class="alt">
+  <div class="wrap">
+    <div class="eyebrow reveal">Watch</div>
+    <h2 class="reveal">The concentration in under two minutes</h2>
+    <video class="reveal" controls preload="metadata" src="sustainability-assessment.mp4" poster="video-poster.jpg" style="width:100%;margin-top:32px;display:block;background:#16201d" aria-label="Short overview video of the Sustainability Assessment Concentration"><track kind="captions" src="sustainability-assessment.vtt" srclang="en" label="English" default></video>
+  </div>
+</section>
+
+<section id="audience">
+  <div class="wrap">
+    <div class="eyebrow reveal">Audience</div>
+    <h2 class="reveal">Departments</h2>
+    <ul class="chips">
+      <li class="reveal">Industrial and Systems Engineering</li>
+      <li class="reveal">Smart Cities</li>
+      <li class="reveal">Civil and Environmental Engineering</li>
+      <li class="reveal">Architectural Engineering and Construction Management</li>
+      <li class="reveal">Chemical Engineering</li>
+      <li class="reveal">Mechanical Engineering</li>
+      <li class="reveal">Petroleum Engineering</li>
+      <li class="reveal">Electrical Engineering</li>
+      <li class="reveal">Materials Science and Engineering</li>
+    </ul>
+  </div>
+</section>
+
+<section id="downloads">
+  <div class="wrap">
+    <div class="eyebrow reveal">Downloads</div>
+    <h2 class="reveal">Flyers</h2>
+    <ul class="dl">
+      <li class="reveal"><a href="flyers/0-Program-Poster.pdf"><b>Program flyer</b><span>The whole concentration on one page</span><small>PDF, one page</small></a></li>
+      <li class="reveal"><a href="flyers/1-Environmental-Management-and-Assessment-Flyer.pdf"><b>Course 1 flyer</b><span>Environmental Management and Assessment</span><small>PDF, one page</small></a></li>
+      <li class="reveal"><a href="flyers/2-ARE460-Green-and-Sustainable-Buildings-Flyer.pdf"><b>Course 2 flyer</b><span>ARE 460 Green and Sustainable Buildings</span><small>PDF, one page</small></a></li>
+      <li class="reveal"><a href="flyers/3-Emissions-Estimation-and-Reporting-Flyer.pdf"><b>Course 3 flyer</b><span>Emissions Estimation and Reporting</span><small>PDF, one page</small></a></li>
+      <li class="reveal"><a href="flyers/4-Circularity-and-Life-Cycle-Assessment-Flyer.pdf"><b>Course 4 flyer</b><span>Circularity and Life Cycle Assessment</span><small>PDF, one page</small></a></li>
+    </ul>
+  </div>
+</section>
+
+<section id="abbreviations" class="alt">
+  <div class="wrap">
+    <div class="eyebrow reveal">Reference</div>
+    <h2 class="reveal">Abbreviations</h2>
+    <dl class="abbr reveal">
+      <div><dt>ISO</dt><dd>International Organization for Standardization</dd></div>
+      <div><dt>LEED</dt><dd>Leadership in Energy and Environmental Design</dd></div>
+      <div><dt>GHG</dt><dd>Greenhouse gas</dd></div>
+      <div><dt>LCA</dt><dd>Life cycle assessment</dd></div>
+    </dl>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Sustainability Assessment Concentration</strong><br>King Fahd University of Petroleum and Minerals (KFUPM) · [DEPARTMENT / COLLEGE]</p>
+    <p>Enrolment: [ENROLMENT STEPS]<br>Contact: [DEPARTMENT EMAIL]</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // Tabs
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+  function select(tab, focus) {
+    tabs.forEach(function (t) {
+      var on = t === tab;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+      var p = document.getElementById(t.getAttribute('aria-controls'));
+      p.hidden = !on;
+      p.classList.toggle('on', on);
+    });
+    if (focus) tab.focus();
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { select(t, false); });
+    t.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { select(tabs[(i + 1) % tabs.length], true); e.preventDefault(); }
+      if (e.key === 'ArrowLeft') { select(tabs[(i + tabs.length - 1) % tabs.length], true); e.preventDefault(); }
+    });
+  });
+
+  // Reveal on scroll
+  var items = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    items.forEach(function (el) { el.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+    });
+  }, { threshold: 0.15 });
+  items.forEach(function (el) { io.observe(el); });
+})();
+</script>
+</body>
+</html>
